@@ -1,0 +1,738 @@
+---
+title: "Senior Black Male Overdose Rates & Community Health"
+author: "Trisha Agrawal and Meera Kohli"
+format:
+  dashboard:
+    theme: pulse
+    embed-resources: true
+---
+
+# Overview
+
+## Row {height="75%"}
+
+### Column {width="55%"}
+
+::: {.card title="Overview"}
+
+This project investigates how Black men in the United States may face disproportionate overdose deaths
+that vary dramatically by county, highlighting structural inequities in health and access to social services due to geographical location. Our first dataset contains records of overdose deaths among a specific cohort of people according to different US counties. The reason this data was collected is because for decades, there has been a phenomenon of abnormally high overdose death rates among Black men in the US. Our second data sets contains more descriptive lifestyle or environment data to us help see trends in relevant health factors.
+
+This topic is an important one because it is a prevalent and
+longstanding healthcare issue that has often been treated like a criminal one, likely causing racial disparities in overdose outcomes. Our target audience for this data would be professionals in public health and social work who are active in local communities within the United States, as the dataset’s county-level scope makes it particularly relevant to community-level interventions from doctors and caseworkers. Other
+stakeholders include researchers and policymakers who would look at the larger picture to analyze national
+or regional trends and influence laws that could improve outcomes for these populations. These
+stakeholders have a significant impact on the lives of countless communities, families, and individuals
+affected by addiction and overdose. 
+
+[**Data Source 1**:]{.underline} <https://purl.stanford.edu/cx567kr8730> (SeniorOverdosesProject_summary_data_for_high_overdose_counties.csv)
+
+[**Data Source 2**]{.underline}: <https://data.cdc.gov/500-Cities-Places/PLACES-Local-Data-for-Better-Health-County-Data-20/swc5-untb/about_data>
+
+
+Research consistently shows that black men have the highest mortality rate from overdoses. Similarly, black women have higher death rates than white women, indicating that race may be a key indication of disparities in some factor(s) that correlate to overdoses ([Columbia Public Health](https://www.publichealth.columbia.edu/news/unintentional-drug-overdoses-take-toll-across-u-s-unequally)). However, race and sex disparities change according to the type of drug involved in the overdose, and we need to check if our dataset differentiates overdose by drug type. Increasing overdose rates have been credited to the increase in opioid use, particularly prescriptions. If most of these overdoses are from opioid prescriptions, we can look for a potential overlap between what health conditions opioids are prescribed for and geographical data of which areas have higher rates of these health conditions. Prescription drug abuse is one possible explanation we can consider when looking for patterns between our datasets ([ScienceDirect](https://www.sciencedirect.com/science/article/pii/S2667193X25002364#sec2)). This aligns with the years our dataset covers (2018–2022), during which the highest increase in overdose deaths was observed in Black and Latino communities, which were also the most negatively affected by the pandemic. It will be interesting to see if we can see a spike in the increasing rate of OD deaths in these communities during the pandemic specifically ([NIH/PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8521065/)). This article looks at trends by substance type for Black men, while the dataset we looked at does not include this information. It identifies fentanyl and synthetic opioids as the leading causes of overdose. Similarly to our dataset, it also examines discrepancies by state and region and finds differences in harm levels for Black men in different parts of the US, as well as differing risk as compared to white men of similar ages in their same states ([American Institute for Boys and Men](https://aibm.org/research/the-new-race-gap-in-drug-overdose-deaths-the-rising-toll-on-black-men/)).
+
+
+Our first data source, the one focused on senior Black men, does not include statistics for other subsets of the vulnerable population meaning that any correlations we find cannot necessarily be broadened to other age groups, racial groups, or gender groups. Additionally, only counties with high overdose counts are included, which may over-represent extreme outcomes and under-represent lower-risk areas. Some key columns contain missing values, and counties with incomplete data may be underrepresented in analyses. PLACES measures are model-based estimates derived from surveys, which, although validated, may not perfectly reflect true county-level outcomes, therefore introducing subtle measurement bias. There is also a slight time difference in the data sets, with the overdose data set looking at 2018-2022 and the PLACES data set primarily including 2023 data, so might be a misalignment in trends. Our data set reflects the principle of privacy because it has undergone many levels of separation and anonymization from the original individualized risk reports and CDC death certificate. Also, we are viewing the data as group/cohort statistics and not on an individual level. Our analysis intends to continue to reflect a theme of accountability, as was intent in the design of these individual data sets. The point of this investigation is the promotion of human values with the goal of improving public health for at-risk communities, which ties in both with professional responsibility and international human rights.
+:::
+
+### Column {width="35%"}
+
+::: {.card}
+![](unintentional_drug_overdoses_a1_1600x900_2.jpg){width="100%" height="100%" style="object-fit: cover;"}
+:::
+
+*Image from: [Columbia Public Health](https://www.publichealth.columbia.edu/news/unintentional-drug-overdoses-take-toll-across-u-s-unequally)*
+
+## Row {height="25%"}
+
+### Column {width="33%"}
+
+::: {.card title="Research Question 1"}
+**Does material insecurity (food, housing, food stamps) predict higher overdose death rates for senior Black men across U.S. counties?**
+:::
+
+### Column {width="33%"}
+
+::: {.card title="Research Question 2"}
+**Where are high-disparity counties geographically concentrated and do those regions show elevated rates of loneliness and lack of social support?**
+:::
+
+### Column {width="33%"}
+
+::: {.card title="Research Question 3"}
+**Is depression or frequent mental distress a stronger predictor of the cohort's overrepresentation in overdose deaths?**
+:::
+
+
+# Data Description and Context
+
+## Row
+
+### Column {width="50%"}
+
+::: {.card title="Dataset 1: Senior Black Male Overdose Rates" style="overflow-y: auto;"}
+
+[**Data Source 1**:]{.underline} <https://purl.stanford.edu/cx567kr8730> (SeniorOverdosesProject_summary_data_for_high_overdose_counties.csv)
+
+[**Who:**]{.underline} The data set was put together by reporters from The Baltimore Banner, The New York Times's Investigative Reporting Fellowship, and Stanford University's Big Local News. They also worked with the Chicago Sun-Times, Public Source/Pittsburgh, Free Press Indiana/Mirror Indy, NJ.com/The Star-Ledger, the Philadelphia Inquirer, The 51st (Washington D.C.), The San Francisco Standard, the Wisconsin Watch/Milwaukee Neighborhood News Service, and The Boston Globe.
+
+[**What:**]{.underline} The data set is made up of an analysis of CDC death certificates from 1989-2022. It is a legitimate data source upon which analysis has already been done and it was found that it displays a cohort effect on drug overdoses for Black men of a certain generation. It was put together by several people from a variety of reputable backgrounds and has been reported on in the New York Times (<https://www.nytimes.com/2025/01/30/upshot/black-men-overdose-deaths.html>).
+
+[**How:**]{.underline} There are 408 counties across the United States, recorded as rows in this data frame. There are 16 columns that are listed below. It tracks deaths of members of this cohort in the years 2018-2022. The geographic range spans the United States but only certain counties were included if they had > 100 deaths in the cohort. This data comes specifically from a cohort study so it cannot be used to find trends in a more general population. However, its purpose is to specifically look at trends for this demographic which is traditionally underserved in the US, so revealed trends can help address inequalities.
+
+[**Features:**]{.underline}
+
+- County: Name of the U.S. county where overdose data is reported.
+- State: Name of the U.S. state the county belongs to.
+- Cohort Overdose Death Rate Overrepresentation: Numeric measure of disparity showing whether the cohort's share of overdose deaths is higher or lower than its share of the population. Positive values indicate overrepresentation.
+- Cohort Share of All Overdoses: Proportion of all overdose deaths in the county (2018–2022) that occurred within the cohort.
+- Cohort Share of Population: Proportion of the county's total population (average from 2018–2022) that belongs to the cohort.
+- Cohort Overdose Deaths, 2018–2022: Total number of overdose deaths in the cohort across the five-year period.
+- Average Cohort Population, 2018–2022: Average number of people in the cohort living in the county over the five-year period.
+- All Overdose Deaths, 2018–2022: Total number of overdose deaths in the county across all populations from 2018–2022.
+- Average County Population, 2018–2022: Average total population of the county over the five-year period.
+- Cohort Overdose Death Rate Magnitude, County: Ratio comparing the cohort's overdose death rate to the county's overall overdose death rate.
+- Cohort Overdose Death Rate Magnitude, National: Ratio comparing the cohort's overdose death rate to the national overdose death rate.
+- Cohort Death Rate Magnitude, Second Highest Cohort Rate: Ratio comparing the cohort's overdose death rate to the second-highest cohort overdose rate in the same county (only available for some counties).
+- GEOID: Unique numeric identifier for each U.S. county. Sizable Cohort Disparity: Boolean indicator showing whether the cohort disparity effect size is considered strong (≥ 0.5).
+
+[**Join:**]{.underline} We plan to join off of county name and geoid if necessary.
+
+[**Issues:**]{.underline} There are some missing values in the Cohort Share of All ODs column which may impact the range of counties we can investigate. There are also missing values in Cohort Death Rate Magnitude, Second Highest Cohort Rate but this column is not particularly relevant to our investigation.
+
+:::
+
+### Column {width="50%"}
+
+::: {.card title="Dataset 2: PLACES: Local Data for Better Health, County Data, 2025 release" style="overflow-y: auto;"}
+
+[**Data Source 2**]{.underline}: <https://data.cdc.gov/500-Cities-Places/PLACES-Local-Data-for-Better-Health-County-Data-20/swc5-untb/about_data>
+
+[**Who:**]{.underline} The PLACES data set is produced by the Centers for Disease Control and Prevention (CDC) in partnership with the Robert Wood Johnson Foundation and the CDC Foundation. The project began in 2015 as the 500 Cities Project and expanded to cover all U.S. counties, places, census tracts, and ZIP Code Tabulation Areas (ZCTAs). It is maintained and updated annually by the CDC using multiple validated data sources. This makes the data set reliable and authoritative for public health research.
+
+[**What:**]{.underline} PLACES provides small area estimates of health and health-related measures for adults (≥18 years) across the United States. The dataset includes 40 measures, such as chronic health outcomes (e.g., diabetes, heart disease, depression), health risk behaviors (e.g., binge drinking, smoking), prevention practices and health care access, and disabilities and social determinants of health (e.g., housing insecurity, food insecurity, social support). Data are generated using a multilevel regression and poststratification (MRP) methodology applied to the Behavioral Risk Factor Surveillance System (BRFSS), U.S. Census population counts, and the American Community Survey (ACS).
+
+[**How:**]{.underline} The PLACES data set has 229,298 entries each representing a measure for a county. Thus, the counties show up repeatedly. This data set is specifically the 2025 release, and has measures based off of the 2020 census report.
+
+[**Why:**]{.underline} This data set connects well to the first one because it provides quantification for community health statistics that we can examine in conjunction with overdose rates for Black men to see if there are larger public health trends at play that contribute to the cohort effect.
+
+[**Features:**]{.underline}
+
+- Year: The year of the data.
+- StateAbbr: The state abbreviation.
+- StateDesc: The full name of the state.
+- LocationName: The name of the county.
+- DataSource: The source of the data.
+- Category: The topic or category of the measure.
+- Measure: The full name of the measure.
+- Data_Value_Unit: The unit of the data value, such as a percentage.
+- Data_Value_Type: The type of data, such as age-adjusted or crude prevalence.
+- Data_Value: The actual value of the measure.
+- Low_Confidence_Limit: The lower limit of the confidence interval.
+- High_Confidence_Limit: The upper limit of the confidence interval.
+- TotalPopulation: The total population based on 2023 census estimates.
+- LocationID: The county FIPS code.
+- Geolocation: The latitude and longitude of the county centroid.
+
+[**Join:**]{.underline} We are going to join based on geoid.
+
+[**Issues:**]{.underline} Each county has a repeat row for every measure but we would be better equipped if it was one row per county with multiple columns for each measure.
+
+:::
+
+# Data Joining & Cleaning
+
+```{r setup, include=FALSE}
+library(plotly)
+library(dplyr)
+library(tidyverse)
+library(leaflet)
+
+BlackSeniors_df <- read.csv("~/Downloads/INFO 201/SeniorOverdosesProject_summary_data_for_high_overdose_counties.csv")
+
+Places_df <- read.csv("~/Downloads/INFO 201/PLACES__Local_Data_for_Better_Health,_County_Data,_2025_release_20260210.csv")
+
+relavent_measures <- c("Depression among adults","Binge drinking among adults","Frequent mental distress among adults","Frequent physical distress among adults","Housing insecurity in the past 12 months among adults" , "Food insecurity in the past 12 months among adults", "Lack of social and emotional support among adults", "Loneliness among adults","Received food stamps in the past 12 months among adults")
+
+Places_df_filtered <- Places_df |>
+  filter(
+    Measure %in% relavent_measures &
+    Data_Value_Type == "Age-adjusted prevalence"
+  )
+
+BlackSeniors_df <- BlackSeniors_df |>
+  mutate(GEOID = str_pad(as.character(GEOID), width = 5, pad = "0"))
+
+Places_df_filtered <- Places_df_filtered |>
+  mutate(LocationID = str_pad(as.character(LocationID), width = 5, pad = "0"))
+
+Places_df_2023 <- Places_df_filtered |>
+  filter(
+    Year == 2023, Data_Value_Type == "Age-adjusted prevalence")
+
+Places_measures_only <- Places_df_2023 |>
+  select(LocationID, Measure, Data_Value)
+
+Places_formatted <- Places_measures_only |>
+  pivot_wider(
+    names_from = Measure,
+    values_from = Data_Value)
+
+SeniorOD_Places_df <- left_join(
+  BlackSeniors_df, Places_formatted, by = c("GEOID" = "LocationID"))
+
+SeniorOD_Places_df_clean <- SeniorOD_Places_df |>
+  filter(Cohort.Share.of.All.Overdoses != "#VALUE!" & Cohort.Share.of.All.Overdoses != "os")
+
+cols_to_check <- c("Depression among adults","Binge drinking among adults","Frequent mental distress among adults","Frequent physical distress among adults","Housing insecurity in the past 12 months among adults" , "Food insecurity in the past 12 months among adults", "Lack of social and emotional support among adults", "Loneliness among adults","Received food stamps in the past 12 months among adults")
+
+SeniorOD_Places_df_clean <- SeniorOD_Places_df_clean |>
+  filter(!if_all(all_of(cols_to_check), is.na))
+
+SeniorOD_Places_df_clean <- SeniorOD_Places_df_clean |>
+  mutate(
+    Cohort.Share.of.All.Overdoses = str_remove(Cohort.Share.of.All.Overdoses, "%"),
+    Cohort.Share.of.All.Overdoses = as.numeric(Cohort.Share.of.All.Overdoses),
+    Cohort.Share.of.Population = str_remove(Cohort.Share.of.Population, "%"),
+    Cohort.Share.of.Population = as.numeric(Cohort.Share.of.Population)
+  )
+
+SeniorOD_Places_df_clean <- SeniorOD_Places_df_clean |> 
+  mutate(
+    Material_Insecurity = (`Food insecurity in the past 12 months among adults` +
+                           `Housing insecurity in the past 12 months among adults` +
+                           `Received food stamps in the past 12 months among adults`) / 3,
+    Material_Insecurity_cat = case_when(
+      Material_Insecurity < 10 ~ "Low",
+      Material_Insecurity >= 10 & Material_Insecurity < 18 ~ "Medium",
+      Material_Insecurity >= 18 ~ "High"
+    )
+  )
+```
+
+## Row
+
+### Column {width="33%"}
+
+::: {.card title="BlackSeniors_df (Original)" style="overflow-y: auto;"}
+```{r}
+glimpse(BlackSeniors_df)
+```
+:::
+
+### Column {width="33%"}
+
+::: {.card title="Data Cleaning & Prep" style="overflow-y: auto;"}
+
+**Step 1: Filter PLACES to relevant measures**
+
+We filter to only the nine PLACES measures relevant to our research questions. This reduces noise from the 40 available measures and ensures our joined dataset only contains variables we intend to analyze. These 9 are:
+
+- Depression among adults
+- Binge drinking among adults
+- Frequent mental distress among adults
+- Frequent physical distress among adults
+- Housing insecurity in the past 12 months among adults
+- Food insecurity in the past 12 months among adults
+- Lack of social and emotional support among adults
+- Loneliness among adults
+- Received food stamps in the past 12 months among adults
+
+**Step 2: Fix GEOID — pad to 5 digits**
+
+FIPS codes for counties may have leading zeros that are dropped when read as numeric. We pad both join keys to 5 characters so the join matches correctly.
+
+**Step 3: Filter to 2023**
+
+We retain only 2023 data so that all nine measures are available for every county, ensuring a complete and consistent set of predictors. The 2022 PLACES data only includes one measure, so keeping it would introduce many NAs across counties.
+
+**Step 4: Pivot wider — one row per county**
+
+The PLACES data arrives in long format with one row per county-measure pair. We pivot to wide format so each county occupies a single row, which is necessary for joining with the overdose dataset and for running county-level comparisons.
+
+:::
+
+### Column {width="33%"}
+
+::: {.card title="Joined & Cleaned Dataset" style="overflow-y: auto;"}
+```{r}
+glimpse(SeniorOD_Places_df_clean)
+```
+:::
+
+## Row
+
+### Column {width="33%"}
+
+::: {.card title="Places_df (Original)" style="overflow-y: auto;"}
+```{r}
+glimpse(Places_df)
+```
+:::
+
+### Column {width="33%"}
+
+::: {.card title="Join Details & Post-Join Cleaning" style="overflow-y: auto;"}
+
+**Left join — preserves all BlackSeniors rows:**
+
+We joined BlackSeniors_df to Places_formatted using a left join on the county FIPS code, matching the `GEOID` column in BlackSeniors_df to the `LocationID` column in Places_df. Both columns were padded to 5 digits with leading zeros prior to joining to ensure codes matched correctly. A left join was used so that every county in the overdose dataset is retained, even if PLACES data is unavailable for that county. This prevents losing overdose records due to unmatched FIPS codes.
+
+**Remove invalid string entries:**
+
+We remove rows with "#VALUE!" and "os" in `Cohort.Share.of.All.Overdoses`, which are data entry errors that would prevent numeric conversion. We also drop rows where all nine PLACES measures are NA, since those counties contribute no usable health information.
+
+**Convert share columns to numeric:**
+
+We strip the "%" character from the cohort share columns and convert them to numeric so they can be used in calculations and visualizations.
+
+**Create Material Insecurity composite variable:**
+
+We average food insecurity, housing insecurity, and food stamp receipt rates into a single composite score, then categorize counties as Low (below 10%), Medium (10–18%), or High (above 18%) to enable color-coded mapping in RQ1.
+
+:::
+
+### Column {width="33%"}
+
+::: {.card title="Joined Dataset — Column Info" style="overflow-y: auto;"}
+
+There are 408 rows and 25 columns: County, State, Cohort Overdose Death Rate Overrepresentation, Cohort Share of All Overdoses, Cohort Share of Population, Highest Overdose Death Rate Seen, Smallest Cohort Population in any Year, Cohort Overdose Deaths (2018–2022), Average Cohort Population (2018–2022), All Overdose Deaths (2018–2022), Average County Population (2018–2022), Cohort Overdose Death Rate Magnitude County, Cohort Overdose Death Rate Magnitude National, Cohort Death Rate Magnitude Second Highest Cohort Rate, GEOID, Sizable Cohort Disparity, Depression among adults, Frequent mental distress among adults, Binge drinking among adults, Food insecurity in the past 12 months among adults, Lack of social and emotional support among adults, Received food stamps in the past 12 months among adults, Frequent physical distress among adults, Housing insecurity in the past 12 months among adults, Loneliness among adults.
+
+
+BlackSeniors columns are County, State, Cohort Overdose Death Rate Overrepresentation, Cohort Share of All Overdoses, Cohort Share of Population, Highest Overdose Death Rate Seen, Smallest Cohort Population in any Year, Cohort Overdose Deaths(2018-2022), Average Cohort Population (2018-2022), All Overdose Deaths (2018-2022), Average County Population (2018-2022), Cohort Overdose Death Rate Magnitude County, Cohort Overdose Death Rate Magnitude National, Cohort Death Rate Magnitude Second Highest Cohort Rate, GEOID, and Sizable Cohort Disparity. Official information for all of these columns can be found in the README file from the Stanford Project- <https://purl.stanford.edu/cx567kr8730>
+
+
+The PLACES columns are Depression among adults, Frequent mental distress among adults, Binge drinking among adults, Food insecurity in the past 12 months among adults, Lack of social and emotional support among adults, Received food stamps in the past 12 months among adults, Frequent physical distress among adults, Housing insecurity in the past 12 months among adults, Loneliness among adults and they list the age-adjusted prevalence percentage for each reported measure. The measure definitions can be found at <https://www.cdc.gov/places/measure-definitions/index.html>
+
+
+We will likely use most of the PLACES columns in conjunction with the Cohort Share of All Overdoses, Cohort Share of Population, All Overdose Deaths (2018-2022), Average County Population (2018-2022), and Sizable Cohort Disparity as they are best suited to see correlation in public health patterns.
+
+
+:::
+
+# RQ1: Material Insecurity
+
+## Row {height="65%"}
+
+### Column {width="35%"}
+
+::: {.card title="Code" style="overflow-y: auto;"}
+```{r q1-map, echo=TRUE, eval=FALSE}
+#| fig-alt: "Interactive U.S. map showing counties where senior Black men are overrepresented in overdose deaths, color-coded by level of material insecurity (food, housing, food stamps). High-disparity counties cluster in the Northeast and Midwest."
+
+map_data <- SeniorOD_Places_df_clean |>
+  left_join(
+    Places_df_2023 |>
+      select(LocationID, Geolocation) |> distinct() |>
+      filter(Geolocation != "") |>
+      mutate(
+        lon = as.numeric(str_extract(Geolocation, "(?<=POINT \\()[-0-9.]+")),
+        lat = as.numeric(str_extract(Geolocation, "(?<=\\s)[-0-9.]+(?=\\))"))
+      ),
+    by = c("GEOID" = "LocationID")) |>
+  filter(!is.na(lat), !is.na(lon), !is.na(Sizable.Cohort.Disparity))
+
+pal <- colorFactor(c("#FFD700", "#FF6500", "#8B0000"), levels = c("Low", "Medium", "High"))
+
+leaflet(map_data) |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  addCircleMarkers(
+    data = filter(map_data, Sizable.Cohort.Disparity == TRUE),
+    lng = ~lon, lat = ~lat,
+    color = ~pal(Material_Insecurity_cat),
+    radius = 5, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>",
+      "Material Insecurity: ", Material_Insecurity_cat)
+  ) |>
+  addCircleMarkers(
+    data = filter(map_data, Sizable.Cohort.Disparity == FALSE),
+    lng = ~lon, lat = ~lat,
+    color = "black", fillColor = "black",
+    radius = 5, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>", "No Sizable Disparity")
+  ) |>
+  addLegend("bottomright", pal = pal, values = map_data$Material_Insecurity_cat,
+    title = "Material Insecurity (Food, Housing, Food Stamps)") |>
+  addControl(
+    "<b>Material Insecurity & Overdose Disparity by County</b><br>
+    <sup>Colored = Sizable Disparity (effect size ≥ 0.5) | Black = No Sizable Disparity</sup><br>
+    <sub>Data: CDC PLACES 2025 & Stanford Big Local News Senior Overdose Project</sub>",
+    position = "topleft")
+```
+:::
+
+### Column {width="65%"}
+
+::: {.card title="RQ1: Material Insecurity by County" style="overflow-y: auto;"}
+```{r q1-map-fig, echo=FALSE}
+map_data <- SeniorOD_Places_df_clean |>
+  left_join(
+    Places_df_2023 |>
+      select(LocationID, Geolocation) |> distinct() |>
+      filter(Geolocation != "") |>
+      mutate(
+        lon = as.numeric(str_extract(Geolocation, "(?<=POINT \\()[-0-9.]+")),
+        lat = as.numeric(str_extract(Geolocation, "(?<=\\s)[-0-9.]+(?=\\))"))
+      ),
+    by = c("GEOID" = "LocationID")) |>
+  filter(!is.na(lat), !is.na(lon), !is.na(Sizable.Cohort.Disparity))
+
+pal <- colorFactor(c("#FFD700", "#FF6500", "#8B0000"), levels = c("Low", "Medium", "High"))
+
+leaflet(map_data) |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  addCircleMarkers(
+    data = filter(map_data, Sizable.Cohort.Disparity == TRUE),
+    lng = ~lon, lat = ~lat,
+    color = ~pal(Material_Insecurity_cat),
+    radius = 5, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>",
+      "Material Insecurity: ", Material_Insecurity_cat)
+  ) |>
+  addCircleMarkers(
+    data = filter(map_data, Sizable.Cohort.Disparity == FALSE),
+    lng = ~lon, lat = ~lat,
+    color = "black", fillColor = "black",
+    radius = 5, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>", "No Sizable Disparity")
+  ) |>
+  addLegend("bottomright", pal = pal, values = map_data$Material_Insecurity_cat,
+    title = "Material Insecurity (Food, Housing, Food Stamps)") |>
+  addControl(
+    "<b>Material Insecurity & Overdose Disparity by County</b><br>
+    <sup>Colored = Sizable Disparity (effect size ≥ 0.5) | Black = No Sizable Disparity</sup><br>
+    <sub>Data: CDC PLACES 2025 & Stanford Big Local News Senior Overdose Project</sub>",
+    position = "topleft")
+```
+:::
+
+## Row {height="35%"}
+
+### Column {width="35%"}
+
+::: {.card title="Code Description" style="overflow-y: auto;"}
+
+We first join the cleaned overdose dataset to the PLACES 2023 geographic data to extract latitude and longitude coordinates from the `Geolocation` column, which is stored as a "POINT (lon lat)" string. We use `str_extract` with to parse the longitude (the number after "POINT (") and latitude (the number before ")") into separate numeric columns. We then filter out any rows missing coordinates or the `Sizable.Cohort.Disparity` flag.
+
+We define a color palette using `colorFactor` that maps Low, Medium, and High material insecurity categories to yellow, orange, and dark red respectively. The map is built in leaflet using two separate `addCircleMarkers` calls: one for counties with sizable disparity (colored by material insecurity category) and one for counties without (shown in black). Popups display the county name and insecurity level on click. A legend and map title are added with `addLegend` and `addControl`.
+
+The benefit of using leaflet over ggplot is that it renders an interactive map with clickable popups, zoom, and pan. This interactivity allows readers to explore individual county-level data points directly, which is essential for a geographically distributed dataset spanning all U.S. counties.
+
+:::
+
+### Column {width="65%"}
+
+::: {.card title="Findings: Does material insecurity predict higher overdose death rates for senior Black men?" style="overflow-y: auto;"}
+
+To answer research question 1, we created a map to display points that represent counties with no disparity between overdose death rates (for senior Black males) as black points, counties with sizable disparity as gray dots, and different colors representing low, medium, or high levels of material insecurity. We observe that many of the counties with sizable disparity overlap with counties marked as medium or high material insecurity (orange and red, respectively). These areas are focused around mainly around the northeast, such as New York, Pennsylvania, and Maryland. This indicates that for these areas, higher levels of material insecurity is associated with a higher disparity in overdose deaths. But, it is not the only factor that leads to them because there are other areas with more concentrated sizable disparities that do not have high or medium levels of material insecurity, like around Texas, Florida, and Washington. Additionally, this relationship is not that strong because some areas with high rates of material insecurity, near Michigan for example, mainly have counties that show no disparity in overdose death rates. This can mean that these two factors are related but not exclusively, since they are each influenced by other things not a part of this data.
+
+:::
+
+# RQ2: Loneliness & Social Support
+
+## Row {height="65%"}
+
+### Column {width="35%"}
+
+::: {.card title="Code" style="overflow-y: auto;"}
+```{r q2-vis, echo=TRUE, eval=FALSE}
+#| fig-alt: "Interactive U.S. map overlaying counties with sizable overdose death disparities for senior Black men (black) with counties in the top 20% for loneliness (red) and lack of social support (blue). Overlap is concentrated in the Midwest and Northeast."
+
+map2_data <- SeniorOD_Places_df_clean |>
+  left_join(
+    Places_df_2023 |>
+      select(LocationID, Geolocation) |> distinct() |>
+      filter(Geolocation != "") |>
+      mutate(
+        lon = as.numeric(str_extract(Geolocation, "(?<=POINT \\()[-0-9.]+")),
+        lat = as.numeric(str_extract(Geolocation, "(?<=\\s)[-0-9.]+(?=\\))"))
+      ),
+    by = c("GEOID" = "LocationID")
+  ) |>
+  filter(!is.na(lat), !is.na(lon), !is.na(Sizable.Cohort.Disparity))
+
+loneliness_threshold <- quantile(map2_data[["Loneliness among adults"]], 0.8, na.rm = TRUE)
+support_threshold   <- quantile(map2_data[["Lack of social and emotional support among adults"]], 0.8, na.rm = TRUE)
+
+loneliness_top <- map2_data |>
+  filter(`Loneliness among adults` >= loneliness_threshold)
+
+support_top <- map2_data |>
+  filter(`Lack of social and emotional support among adults` >= support_threshold)
+
+leaflet(map2_data) |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  addCircleMarkers(lng = ~lon, lat = ~lat, color = "azure4", radius = 3, fillOpacity = 0.4, stroke = FALSE) |>
+  addCircleMarkers(
+    data = filter(map2_data, Sizable.Cohort.Disparity == TRUE),
+    lng = ~lon, lat = ~lat, color = "black", radius = 6, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>Sizable Disparity")) |>
+  addCircleMarkers(
+    data = loneliness_top,
+    lng = ~lon, lat = ~lat, color = "red", radius = 6, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>Top 20% Loneliness")) |>
+  addCircleMarkers(
+    data = support_top,
+    lng = ~lon, lat = ~lat, color = "blue", radius = 6, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>Top 20% Lack of Support")) |>
+  addLegend(position = "bottomright",
+    colors = c("black", "red", "blue"),
+    labels = c("Sizable Disparity", "Top 20% Loneliness", "Top 20% Lack of Social/Emotional Support"),
+    title = "County Labels") |>
+  addControl(
+    "<b>Geographic Concentration of Disparity, Loneliness & Lack of Support</b><br>
+    <sup>Top 20% thresholds calculated from 80th percentile of county distributions</sup><br>
+    <sub>Data: CDC PLACES 2025 & Stanford Big Local News Senior Overdose Project</sub>",
+    position = "topleft")
+```
+:::
+
+### Column {width="65%"}
+
+::: {.card title="RQ2: Loneliness & Lack of Support in High-Disparity Counties" style="overflow-y: auto;"}
+```{r q2-vis-fig, echo=FALSE}
+map2_data <- SeniorOD_Places_df_clean |>
+  left_join(
+    Places_df_2023 |>
+      select(LocationID, Geolocation) |> distinct() |>
+      filter(Geolocation != "") |>
+      mutate(
+        lon = as.numeric(str_extract(Geolocation, "(?<=POINT \\()[-0-9.]+")),
+        lat = as.numeric(str_extract(Geolocation, "(?<=\\s)[-0-9.]+(?=\\))"))
+      ),
+    by = c("GEOID" = "LocationID")
+  ) |>
+  filter(!is.na(lat), !is.na(lon), !is.na(Sizable.Cohort.Disparity))
+
+loneliness_threshold <- quantile(map2_data[["Loneliness among adults"]], 0.8, na.rm = TRUE)
+support_threshold   <- quantile(map2_data[["Lack of social and emotional support among adults"]], 0.8, na.rm = TRUE)
+
+loneliness_top <- map2_data |>
+  filter(`Loneliness among adults` >= loneliness_threshold)
+
+support_top <- map2_data |>
+  filter(`Lack of social and emotional support among adults` >= support_threshold)
+
+leaflet(map2_data) |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  addCircleMarkers(lng = ~lon, lat = ~lat, color = "azure4", radius = 3, fillOpacity = 0.4, stroke = FALSE) |>
+  addCircleMarkers(
+    data = filter(map2_data, Sizable.Cohort.Disparity == TRUE),
+    lng = ~lon, lat = ~lat, color = "black", radius = 6, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>Sizable Disparity")) |>
+  addCircleMarkers(
+    data = loneliness_top,
+    lng = ~lon, lat = ~lat, color = "red", radius = 6, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>Top 20% Loneliness")) |>
+  addCircleMarkers(
+    data = support_top,
+    lng = ~lon, lat = ~lat, color = "blue", radius = 6, fillOpacity = 0.8, stroke = FALSE,
+    popup = ~paste0("<b>", County, ", ", State, "</b><br>Top 20% Lack of Support")) |>
+  addLegend(position = "bottomright",
+    colors = c("black", "red", "blue"),
+    labels = c("Sizable Disparity", "Top 20% Loneliness", "Top 20% Lack of Social/Emotional Support"),
+    title = "County Labels") |>
+  addControl(
+    "<b>Geographic Concentration of Disparity, Loneliness & Lack of Support</b><br>
+    <sup>Top 20% thresholds calculated from 80th percentile of county distributions</sup><br>
+    <sub>Data: CDC PLACES 2025 & Stanford Big Local News Senior Overdose Project</sub>",
+    position = "topleft")
+```
+:::
+
+## Row {height="35%"}
+
+### Column {width="35%"}
+
+::: {.card title="Code Description" style="overflow-y: auto;"}
+
+We use the same coordinate extraction approach as RQ1 to add latitude and longitude to the dataset. We then calculate the 80th percentile thresholds for both `Loneliness among adults` and `Lack of social and emotional support among adults` using `quantile`, and filter the data into two separate subsets one for the top 20% loneliness counties and one for the top 20% lack of support counties. Using `quantile` to define the threshold means the cutoff adapts to the actual distribution of the data rather than using an arbitrary fixed value.
+
+The map layers four sets of circle markers on top of each other: all counties in gray as a base layer, counties with sizable disparity in black, top 20% loneliness counties in red, and top 20% lack of support counties in blue. Overlapping points across layers reveal geographic co-occurrence of these variables.
+
+:::
+
+### Column {width="65%"}
+
+::: {.card title="Findings: Where are high-disparity counties concentrated and do they show elevated loneliness and lack of support?" style="overflow-y: auto;"}
+
+To answer our second research question, we created another map which plots all counties for which we have data in gray, the counties with a sizable disparities for overdose deaths for adults (between black male seniors) plotted in black, the top 20% of counties with highest rates of loneliness in red, and the top 20% of counties with rates of lacking social or emotional support in blue. Observing this map, we can see that on the East Coast, there is some concentration of red and blue points with black points, indicating that there may be a correlation of a lack of support and loneliness associated with disparities in overdose death rates. Particularly, the areas with the highest overlap among all three variables is in the northeast region near Michigan, Ohio, Illinois, and Wisconsin. There also appears to be some overlap near New York. In these areas, there seems to be a relationship between these high levels of lack of support and loneliness with increased levels of overdose death rate disparities. This could suggest that these factors that cause social isolation could influence the rates of individuals overdosing in a particular area.
+
+There are also some areas where there is no overlap, but there is a noticeable concentration of one variable, such as several counties in the South and in California with reported high levels of lack of support. In these areas, there is unlikely to be much correlation between overdose death rate disparities and loneliness or lack of support.
+
+:::
+
+# RQ3: Mental Health Predictors
+
+## Row {height="65%"}
+
+### Column {width="35%"}
+
+::: {.card title="Code" style="overflow-y: auto;"}
+```{r q3-vis-fig, echo=TRUE, eval=FALSE}
+mental_data <- SeniorOD_Places_df_clean |>
+  pivot_longer(
+    cols = c(`Depression among adults`, `Frequent mental distress among adults`),
+    names_to = "predict",
+    values_to = "rate"
+  )
+
+p <- ggplot(mental_data, aes(x = rate, y = Cohort.Overdose.Death.Rate.Overrepresentation)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  facet_wrap(~ predict) +
+  labs(
+    title = "Mental Health Rates vs. Overdose Death Overrepresentation",
+    x = "Age-Adjusted Prevalence (%)",
+    y = "Cohort Overdose Death Rate Overrepresentation"
+  )
+
+ggplotly(p)
+```
+:::
+
+### Column {width="65%"}
+
+::: {.card title="RQ3: Depression vs. Frequent Mental Distress as Predictors"}
+```{r q3-fig, echo=FALSE, eval=TRUE}
+library(plotly)
+
+mental_data <- SeniorOD_Places_df_clean |>
+  pivot_longer(
+    cols = c(`Depression among adults`, `Frequent mental distress among adults`),
+    names_to = "predict",
+    values_to = "rate"
+  )
+
+p <- ggplot(mental_data, aes(x = rate, y = Cohort.Overdose.Death.Rate.Overrepresentation)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  facet_wrap(~ predict) +
+  labs(
+    title = "Mental Health Rates vs. Overdose Death Overrepresentation",
+    x = "Age-Adjusted Prevalence (%)",
+    y = "Cohort Overdose Death Rate Overrepresentation"
+  )
+
+ggplotly(p)
+```
+:::
+
+## Row {height="35%"}
+
+### Column {width="35%"}
+
+::: {.card title="Code Description" style="overflow-y: auto;"}
+
+We use `pivot_longer` to reshape `Depression among adults` and `Frequent mental distress among adults` into a single long-format dataset with one row per county per predictor. This allows both variables to be visualized side by side in a single `ggplot` call using `facet_wrap`. Without pivoting, we would need to create two separate plots and combine them manually.
+
+We then plot a scatterplot for each predictor with `geom_point` and overlay a linear regression trend line using `geom_smooth(method = "lm")`. The `facet_wrap(~ predict)` call splits the plot into two panels, one per predictor, making it easy to visually compare the slope and spread of each relationship against overdose death rate overrepresentation.
+
+We used `plotly` to make it interactive.
+
+:::
+
+### Column {width="65%"}
+
+::: {.card title="Findings: Is depression or frequent mental distress a stronger predictor of overdose death overrepresentation?" style="overflow-y: auto;"}
+
+In this visualization, we answered our third research question by creating facetted scatterplots with a trend line to compare, at a county level, how the rates of depression among adults compared with frequent mental distress among adults impacted overrepresentation in overdose death rates. As seen by both lines, they have a negative relationship indicating that as the percent of depression or mental distress increases, overrepresentation decreases slightly. This negative relationship appears steeper for frequent mental distress, indicating that it might have a closer relationship with predicting overrepresentation. However, neither variable appears to be a strong predictor of overdose overrepresentation.
+
+:::
+
+
+# Conclusion
+
+## Row {height="100%"}
+
+### Column {width="100%"}
+
+#### Summary Takeaways
+
+Based on our three visualizations aimed at our research questions, we noticed a few patterns between the data but no strong, definitive correlations. Our first two visualizations were maps that helped visualize geospatial data, which was particularly important since our data included records (each row) for individual counties in the US. One of the patterns we observed was that the greatest disparities in overdose death rates among senior Black men were geographically clustered in different areas. Mainly, they were clustered around the Midwest, such as the Great Lake states, or on the East Coast near New York and Maryland. Sometimes, this also appeared in Southern states. This was also somewhat consistent between several variables, such as social isolation related factors (loneliness and lack of social and emotional support) or various levels of material insecurity. While there may be overlap among these factors and counties having a sizable disparity between overdose death rates, these patterns are not consistent enough to support any further correlation or be used to predict one another. Our third visualization shows that mental health related factors do not have a strong relationship on overrepresentation, but there might be some patterns between higher rates of depression relating to overrepresentation of OD deaths among Black senior men.
+
+One interesting consideration is that the overlap of several of these factors may indicate that it is not just one factor that influences or impacts overdose death rates, but it could be a combination of factors. When multiple social and material factors intersect, this could have a greater influence on widening disparities in overdose death rates than just one single factor at a time. In that case, there may be other factors we have not explored that have greater influences on death rate disparities.
+
+Some limitations we faced in our data included some missing data, but mainly that our overdose death rate dataset did not collect data for every single county in the US. For this reason, our interpretation of sizable disparities being geographically clustered around some areas and regions may be incorrectly represented just because of missing data.
+
+Future directions for research could be investigating if this cohort effect is reflected on slighly younger generations of Black men. We could also look into the same age cohort of different ethnicities/races in the US and see if similar patterns exist in these communities in similar or different parts of the country. We could look at combinations of factors instead of one at a time. We could also include data about available treatment centers or public health resources that are accessible by Black elder communities specifically. 
+
+# Coding Notes
+
+## Row {height="15%"}
+
+### Column {width="100%"}
+
+These are the libraries used throughout the project.
+
+## Row {height="20%"}
+
+### Column {width="100%"}
+
+```{r setup-displays, echo=TRUE}
+library(plotly)
+library(dplyr)
+library(tidyverse)
+library(leaflet)
+```
+
+## Row {height="65%"}
+
+### Column {width="100%"}
+
+#### Tools Used Outside of Class
+
+We mainly utilized tools covered in class, including `mutate`, `filter`, `pivot_wider`, `pivot_longer`, `left_join`, and `case_when`. In addition, we used the `tidyr` and `stringr` libraries within tidyverse to adjust column formatting ([tidyr](https://tidyr.tidyverse.org/), [stringr](https://stringr.tidyverse.org/)). To get the multiple columns to work in the dashboard, we used the syntax from [Quarto multiple columns](https://quarto.org/docs/presentations/revealjs/index.html#multiple-columns). For interactive maps, we used [r-charts leaflet](https://r-charts.com/spatial/interactive-maps-leaflet/) as a reference.
+
+
+**str_extract, str_pad, str_remove (strings — intermediate tool)**
+
+These string functions solved three distinct data formatting problems that could not be handled with basic wrangling tools alone. `str_extract` pulled latitude and longitude values out of the `Geolocation` column, which stored coordinates as a raw character string.`str_pad` ensured that FIPS county codes were always 5 digits by adding leading zeros where they had been dropped during CSV import, which was necessary for the join between the two datasets to match correctly. `str_remove` stripped the "%" character from the cohort share columns so they could be converted to numeric for use in calculations. We learned to use these functions through the [stringr documentation](https://stringr.tidyverse.org/).
+
+
+**pivot_wider**
+
+`pivot_wider` reshapes data from long format to wide format and in our case, from one row per county-measure pair in the PLACES dataset to one row per county with one column per measure. This was necessary before joining to the overdose dataset, since a join requires one row per county on both sides. Without `pivot_wider`, each county would have appeared 9 times in the joined data (once per PLACES measure), producing incorrect results in all downstream analyses. [tidyr pivot_wider documentation](https://tidyr.tidyverse.org/reference/pivot_wider.html).
+
+**quantile()**
+
+`quantile` calculates the value at a specified percentile of a distribution. We used it to find the 80th percentile of the loneliness and lack of social support distributions, which defined the "top 20%" threshold for the RQ2 map. This is preferable to using an arbitrary fixed cutoff because the threshold automatically adapts to the actual spread of the data. [base R quantile documentation](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/quantile).
+
+
+# Group Information
+
+## Row {height="20%"}
+
+### Column {width="100%"}
+
+::: {.card title="About This Project" style="background-color: #593196; color: white;"}
+Our group is focused on investigating racial disparities in public healthcare through the lens of drug overdoses and measures of behavioral risk factors. Our lab section is BE, on Wednesdays from 10:30–11:20 with Runa He.
+:::
+
+## Row {height="80%"}
+
+### Column {width="50%"}
+
+::: {.card title="Meera Kohli" style="background-color: #29abe0; color: white;"}
+
+*Bioengineering (Data Science Option), UW College of Engineering*
+
+mkohli\@uw.edu
+
+Meera is interested in the intersections of data science and medical research.
+
+:::
+
+### Column {width="50%"}
+
+::: {.card title="Trisha Agrawal" style="background-color: #EE7600; color: white;"}
+
+*Informatics + Political Science, Information School / College of Arts and Sciences*
+
+trisha21\@uw.edu
+
+Trisha is interested in the intersection of information technologies and policy.
+
+:::
+
